@@ -28,12 +28,12 @@ public class SistemaMonitoramento {
     public void exibirRelatorio (){
         System.out.println("===== Sensores Válidos =====");
         for (Sensor sensor : sensoresValidos) {
-            System.out.println(sensor.getId());
+            System.out.println("Sensor " + sensor.getId());
         }
 
         System.out.println("===== Sensores Com Erro =====");
         for (ErroSensor erroSensor : sensorComErro) {
-            System.out.println(erroSensor.getIdSensor());
+            System.out.println("Sensor " + erroSensor.getIdSensor() + " --> " + erroSensor.getMensagemErro());
         }
 
     }
