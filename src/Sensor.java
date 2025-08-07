@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sensor {
-
     private String id;
     private List<Double> leituras;
 
@@ -11,32 +10,31 @@ public class Sensor {
         this.leituras = new ArrayList<>();
     }
 
-    public void registrarLeituras(List<Double> leituras) throws LeituraInvalidaException{
-        if(leituras.size() != 100){
-            throw new IllegalArgumentException("O total de leituras deve sem 100");
-        }
-
-        for(int i = 0; i < leituras.size(); i++){
-            double temp = leituras.get(i);
-            if (temp < -60 || temp > 60){
-                throw new LeituraInvalidaException(i, temp);
-            }
-        }
+    public String getId() {
+        return id;
     }
 
     public List<Double> getLeituras() {
         return leituras;
     }
 
-    public String getId() {
-        return id;
+    public void registrarLeituras(List<Double> novasLeituras) throws LeituraInvalidaException {
+        if (novasLeituras.size() != 100) {
+            throw new IllegalArgumentException("O número de leituras deve ser exatamente 100.");
+        }
+
+        for (int i = 0; i < novasLeituras.size(); i++) {
+            double temp = novasLeituras.get(i);
+            if (temp < -60 || temp > 60) {
+                throw new LeituraInvalidaException(i, temp);
+            }
+        }
+
+        this.leituras = novasLeituras;
     }
 
     @Override
     public String toString() {
-        return "Sensor{" +
-                "leituras=" + leituras +
-                ", id='" + id + '\'' +
-                '}';
+        return "Sensor{" + "id='" + id + '\'' + ", leituras=" + leituras + '}';
     }
 }
